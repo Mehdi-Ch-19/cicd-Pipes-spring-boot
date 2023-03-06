@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -57,12 +58,7 @@ class ManagerServiceTest {
 
     @Test
     void deleteUser() {
-        Manager manager = Manager.builder()
-                .id(1L)
-                .name("mounir")
-                .email("mounir@gmail.com")
-                .password("123")
-                .build();
+
         Long userid = 1L;
         when(managerRepo.findById(anyLong())).thenReturn(Optional.of(manager));
         doNothing().when(managerRepo).delete(any(Manager.class));
@@ -72,6 +68,10 @@ class ManagerServiceTest {
 
     @Test
     void getbyId() {
+        when(managerRepo.findById(anyLong())).thenReturn(Optional.of(manager2));
+        Manager existManger = managerService.getbyId(manager2.getId());
+        assertNotNull(existManger);
+        assertThat(existManger.getId(),notNullValue(null));
     }
 
     @Test
