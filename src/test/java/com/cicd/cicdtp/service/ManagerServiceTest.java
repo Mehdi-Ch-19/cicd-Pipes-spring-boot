@@ -43,7 +43,7 @@ class ManagerServiceTest {
                 .id(2L)
                 .name("said")
                 .email("saidd@gmail.com")
-                .password("523")
+                .password("5223")
                 .build();
     }
 
