@@ -1,7 +1,7 @@
 package com.cicd.cicdtp.service;
 
-import com.cicd.cicdtp.entity.User;
-import com.cicd.cicdtp.repository.UserRepo;
+import com.cicd.cicdtp.entity.Manager;
+import com.cicd.cicdtp.repository.ManagerRepo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,27 +18,27 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class UserServiceTest {
+class ManagerServiceTest {
 
 
     @Mock
-    UserRepo userRepo;
+    ManagerRepo managerRepo;
 
     @InjectMocks
-    private UserService userService;
-    private User user;
-    private User user2;
+    private ManagerService managerService;
+    private Manager manager;
+    private Manager manager2;
 
 
     @BeforeEach
     void setUp() {
-         user = User.builder()
+         manager = Manager.builder()
                 .id(1L)
                 .name("mounir")
                 .email("mounir@gmail.com")
                 .password("123")
                 .build();
-        user2 = User.builder()
+        manager2 = Manager.builder()
                 .id(2L)
                 .name("said")
                 .email("said@gmail.com")
@@ -49,25 +49,25 @@ class UserServiceTest {
     @Test
     void adduser() {
 
-        when(userRepo.save(any(User.class))).thenReturn(user);
-        User newUser = userService.adduser(user);
-        assertNotNull(user);
-        assertThat(newUser.getName(),equalTo("mounir"));
+        when(managerRepo.save(any(Manager.class))).thenReturn(manager);
+        Manager newManager = managerService.adduser(manager);
+        assertNotNull(manager);
+        assertThat(newManager.getName(),equalTo("mounir"));
     }
 
     @Test
     void deleteUser() {
-        User user = User.builder()
+        Manager manager = Manager.builder()
                 .id(1L)
                 .name("mounir")
                 .email("mounir@gmail.com")
                 .password("123")
                 .build();
         Long userid = 1L;
-        when(userRepo.findById(anyLong())).thenReturn(Optional.of(user));
-        doNothing().when(userRepo).delete(any(User.class));
-        userService.deleteUser(userid);
-        verify(userRepo,times(1)).delete(user);
+        when(managerRepo.findById(anyLong())).thenReturn(Optional.of(manager));
+        doNothing().when(managerRepo).delete(any(Manager.class));
+        managerService.deleteUser(userid);
+        verify(managerRepo,times(1)).delete(manager);
     }
 
     @Test
@@ -76,14 +76,14 @@ class UserServiceTest {
 
     @Test
     void allUsers() {
-        List<User> userList = new ArrayList<>();
-        userList.add(User.builder()
+        List<Manager> managerList = new ArrayList<>();
+        managerList.add(Manager.builder()
                 .id(1L)
                         .name("mounir")
                         .email("mounir@gmail.com")
                         .password("123")
                 .build());
-        userList.add(User.builder()
+        managerList.add(Manager.builder()
                         .id(2L)
                 .name("said")
                 .email("said@gmail.com")
@@ -91,8 +91,8 @@ class UserServiceTest {
                 .build());
 
 
-        when(userRepo.findAll()).thenReturn(userList);
-        List<User> list = userService.allUsers();
+        when(managerRepo.findAll()).thenReturn(managerList);
+        List<Manager> list = managerService.allUsers();
         assertEquals(2,list.size());
         assertNotNull(list);
      }
