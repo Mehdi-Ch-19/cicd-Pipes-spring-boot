@@ -23,6 +23,7 @@ public class ManagerController {
     @DeleteMapping("{userId}")
     public ResponseEntity<String> deleteManager(@PathVariable Long userId){
         try {
+
             managerService.deleteUser(userId);
             return ResponseEntity.ok("delete user with succes");
         }catch (RuntimeException exception){
