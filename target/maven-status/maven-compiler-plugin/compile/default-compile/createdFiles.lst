@@ -1,6 +1,1 @@
-com\cicd\cicdtp\repository\UserRepo.class
-com\cicd\cicdtp\service\UserService.class
 com\cicd\cicdtp\CicdtpApplication.class
-com\cicd\cicdtp\entity\User$UserBuilder.class
-com\cicd\cicdtp\entity\User.class
-com\cicd\cicdtp\web\UserController.class
