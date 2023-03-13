@@ -19,7 +19,7 @@ public class CicdtpApplication {
             service.adduser(Manager.builder()
                             .name("mehdi")
                             .password("haha")
-                            .email("mehdi@gmail.com")
+                            .email("mehdi@gmasil.com")
                     .build());
         };
     }
