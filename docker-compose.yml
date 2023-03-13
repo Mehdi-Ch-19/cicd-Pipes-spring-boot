@@ -1,6 +1,6 @@
 services:
 
-  manager-srud:
+  manager-crud:
     image: mehdich19/manager-crud:latest
     build:
       context: .
