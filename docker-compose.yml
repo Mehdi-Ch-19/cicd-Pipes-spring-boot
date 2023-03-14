@@ -1,7 +1,7 @@
 services:
 
   manager-crud:
-    image: mehdich19/manager-crud:latest
+    image: manager-crud
     build:
       context: .
     container_name: manager

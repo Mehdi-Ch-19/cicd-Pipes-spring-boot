@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/user")
 public class ManagerController {
@@ -29,6 +31,10 @@ public class ManagerController {
         }catch (RuntimeException exception){
             return  ResponseEntity.notFound().build();
         }
+    }
+    @GetMapping
+    public List<Manager> allManagers(){
+        return managerService.allUsers();
     }
     @GetMapping("{userId}")
     public ResponseEntity<Manager> getById(@PathVariable Long userId){
