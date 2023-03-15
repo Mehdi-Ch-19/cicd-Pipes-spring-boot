@@ -1,5 +1,4 @@
 services:
-
   manager-crud:
     image: manager-crud
     build:
